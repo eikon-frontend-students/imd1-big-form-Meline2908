@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treasure Appraisal Form</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Have your treasure appraised!</h1>
+
+      <form class="appraisal-form" id="appraisalForm"></form>
+      <div class="form-group">
+        <label>First name, last name <span>*</span></label>
+        <input type="text" placeholder="write..." required />
+      </div>
+
+      <div class="form-group">
+        <label>Email <span>*</span></label>
+        <input type="email" placeholder="write..." required />
+      </div>
+
+      <div class="form-group">
+        <label>Country <span>*</span></label>
+
+        <div class="select-wrapper">
+          <select required>
+            <option value="">USA, France...</option>
+            <option>France</option>
+            <option>USA</option>
+            <option>Canada</option>
+            <option>Germany</option>
+            <option>Italy</option>
+            <option>Others</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="accordion active">
+        <button type="button" class="accordion-header">
+          <span>Object Identity</span>
+          <span class="accordion-icon">+</span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="form-group">
+            <label>Film title <span>*</span></label>
+            <input type="text" placeholder="E.g, The Exorcist..." required />
+          </div>
+
+          <div class="form-group">
+            <label>Year of the poster <span>*</span></label>
+
+            <div class="select-wrapper">
+              <select required>
+                <option value="">e.g, 1995...</option>
+
+                <script>
+                  for (let year = 2025; year >= 1900; year--) {
+                    document.write(`<option>${year}</option>`);
+                  }
+                </script>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Poster country</label>
+
+            <div class="select-wrapper">
+              <select>
+                <option value="">USA, France...</option>
+                <option>France</option>
+                <option>USA</option>
+                <option>Japan</option>
+                <option>UK</option>
+                <option>Others</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion active">
+        <button type="button" class="accordion-header">
+          <span>The Physical State</span>
+          <span class="accordion-icon">+</span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="form-group">
+            <label>State of preservation <span>*</span></label>
+
+            <div class="range-labels">
+              <span>Deteriorated</span>
+              <span>Mid</span>
+              <span>Perfect</span>
+            </div>
+
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              class="range-slider"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Comment</label>
+
+            <textarea
+              rows="5"
+              placeholder="E.g, my poster is cracked at the bottom..."
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion active">
+        <button type="button" class="accordion-header">
+          <span>Estimate & Contact</span>
+          <span class="accordion-icon">+</span>
+        </button>
+
+        <div class="accordion-content">
+          <div class="form-group">
+            <label>Original purchase price <span>*</span></label>
+            <input type="text" placeholder="E.g, 245$..." required />
+          </div>
+
+          <div class="form-group">
+            <label>Desired estimate <span>*</span></label>
+            <input type="text" placeholder="E.g, 245$..." required />
+          </div>
+
+          <div class="form-group">
+            <label>Poster history <span>*</span></label>
+
+            <textarea
+              rows="8"
+              placeholder="Write something..."
+              required
+            ></textarea>
+
+            <small>Where did you find it?</small>
+          </div>
+
+          <div class="form-group">
+            <label>
+              Upload of a high-resolution photo of the poster
+              <span>*</span>
+            </label>
+
+            <label class="upload-box">
+              <input type="file" hidden />
+
+              <div class="upload-icon">↑</div>
+
+              <p>jpg, pdf, png...</p>
+            </label>
+          </div>
+        </div>
+      </div>
+      <form>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      const accordions = document.querySelectorAll(".accordion");
+
+      accordions.forEach((accordion) => {
+        const header = accordion.querySelector(".accordion-header");
+
+        header.addEventListener("click", () => {
+          accordion.classList.toggle("active");
+        });
+      });
+
+      const form = document.getElementById("appraisalForm");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        window.location.href = "confirmation.html";
+      });
+    </script>
+  </body>
+</html>
